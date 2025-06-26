@@ -9,7 +9,7 @@ export function LuckyNumber() {
         var result = Math.floor(Math.random() * 40) + 1;
         setLuckyNumber(result);
         if (array.includes((result + ", "))) {
-            setMsg("Este número já foi sorteado!");
+         alert("esse numero ja foi sorteado, tente novamente!")
         } else {
             setMsg("");
             setArray(0 + ", ");
