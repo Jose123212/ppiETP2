@@ -3,24 +3,26 @@ import { MyText } from "./MyText";
 
 export function MyTextList() {
   const texts = [
-    { title: "Meu titulo", text: "meu texto" },
-    { title: "Meu titulo", text: "meu texto" },
-    { title: "Meu titulo", text: "meu texto" },
-    { title: "Meu titulo", text: "meu texto" },
-  ]; // array de objetos com texto e título
+    { title: "Meu título", text: "Meu texto" },
+    { title: "Meu título", text: "Meu texto" },
+    { title: "Meu título", text: "Meu texto" },
+    { title: "Meu título", text: "Meu texto" },
+    { title: "Meu título", text: "Meu texto" },
+    { title: "Meu título", text: "Meu texto" },
+  ];
 
   return (
     <>
       <h1 className={styles.title}>Lista de Textos</h1>
       <div className={styles.container}>
-        {texts.map((obj, index) => {
+        {texts.map((text, index) => {
           return (
-            <MyText key={index} title={`${obj.title} ${index + 1}`}>
-              {`${obj.text} ${index + 1}`}
+            <MyText key={index} title={`${text.title} ${index + 1}`}>
+              {text.text}
             </MyText>
           );
         })}
       </div>
-    </> // Abrimos {} para podermos programar em JS dentro do JSX
+    </>
   );
 }
