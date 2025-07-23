@@ -1,4 +1,5 @@
 import styles from "./Main.module.css";
+import { Github, Instagram, Phone, BookOpenCheck } from "lucide-react";
 const cards = [0, 1, 2, 3, 4];
 export function Main() {
   const randomNumbers = cards.map(() => Math.floor(Math.random() * 1000));
