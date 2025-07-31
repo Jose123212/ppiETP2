@@ -1,46 +1,59 @@
 import styles from "./ProductList.module.css";
-import { useEffect, useState } from "react";
 import { Product } from "./Product.jsx";
+import { CircularProgress } from "@mui/material";
+import { useContext, useRef, useState, useEffect } from "react";
+import { CartContext } from "../../service/CartContext";
 
-
-export function ProductList({ addToCart, removeFromCart }) {
-  var category =  "mobile-accessories";
-  var limit = 12;
-  var apiUrl = `https://dummyjson.com/products/category/${category}?limit=${limit}&select=id,thumbnail,title,price,description`;
-  const [products, setProducts] = useState([]);
-  var [carrinho, setCarrinho] = useState([]);
-  var [total, setTotal] = useState(0);
-   
-  const [error, setError] = useState(null);
+export function ProductList() {
+  const { products, loading, error } = useContext(CartContext);
+  
+  const searchInput = useRef(null);
+  var [filteredProducts, setFilteredProducts] = useState(products);
 
   useEffect(() => {
-    async function fetchProducts() {
-      try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-
-        setProducts(data.products);
-      } catch (error) {
-        setError(error);
-      } finally {
-
-      }
-    }
-    setTimeout(() => {
-      fetchProducts();
-    }, 500);
-  }, []);
-  
+    setFilteredProducts(products);
+  }, [products]);
 
   return (
     <div className={styles.container}>
        <div className= {styles.main}>
-       {products.map((product) => (
-      <Product key={product.id} product={product} addToCart={addToCart} removeFromCart={removeFromCart}/>
+        <div className= {styles.search}>
+          <input 
+          type="text"
+          ref={searchInput}
+          placeholder="Search products..."
+          onChange={() => {
+            const query = searchInput.current.value.toLowerCase();
+            filteredProducts = products.filter(product =>
+              product.title.toLowerCase().includes(query) || 
+              product.description.toLowerCase().includes(query)
+            );
+            setFilteredProducts(filteredProducts);
+          }}
+          />
+          <button onClick={() => {
+            searchInput.current.value = "";
+            setFilteredProducts(products);
+          }}>Clear</button>
+        </div>
+       {filteredProducts.map((product) => (
+      <Product key={product.id} product={product}/>
         
         ))}
         </div>
-       
+         {loading && (
+        <div>
+          <CircularProgress
+            // size="sm"
+            thickness={5}
+            style={{ margin: "2rem auto", display: "block" }}
+            sx={{
+              color: "#001111",
+            }}
+          />
+          <p>Loading products...</p>
+        </div>
+      )}
       {error && <p>Error loading products: {error.message}</p>}
     </div>
   );

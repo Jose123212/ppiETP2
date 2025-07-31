@@ -1,62 +1,49 @@
 import styles from "./Cart.module.css";
 import { useState } from "react";
+import { useContext } from "react";
+import { CartContext } from "../../service/CartContext";
 
-export function Cart({ cart, removeFromCart, addToCart }) {
-  // Agrupar produtos por ID e contar quantidades
-  const productMap = {};
-  cart.forEach((product) => {
-    if (productMap[product.id]) {
-      productMap[product.id].qty += 1;
-    } else {
-      productMap[product.id] = { ...product, qty: 1 };
-    }
-  });
-
-  const uniqueProducts = Object.values(productMap);
-  const total = uniqueProducts.reduce(
-    (sum, product) => sum + product.price * product.qty,
-    0
-  );
+export function Cart() {
+  const { uniqueProducts, cart, removeFromCart, addToCart } = useContext(CartContext);
+  
 
   return (
     <div className={styles.cart}>
       <h2 className={styles.title}>Shopping Cart</h2>
-
       {uniqueProducts.length === 0 ? (
         <p className={styles.empty}>Your cart is empty</p>
       ) : (
         <>
           <ul className={styles.cartList}>
             {uniqueProducts.map((product) => (
-              <li key={product.id} className={styles.cartItem}>
-                <img
-                  src={product.thumbnail || ""}
-                  alt={product.title || "Product Image"}
-                />
-                <h3>{product.title}</h3>
-
-                {product.qty > 1 && (
-                  <button onClick={() => removeFromCart(product)}>-</button>
-                )}
-
-                <p>{product.qty}</p>
-                <button onClick={() => addToCart(product)}>+</button>
-
-                <p>${(product.price * product.qty).toFixed(2)}</p>
-
-                <button
-                  onClick={() => {
-                    removeFromCart(product, product.qty);
-                  }}
-                >
-                  Remove
-                </button>
+              <li key={product.id}>
+                <div className={styles.cartItem}>
+                  <img src={product.thumbnail} alt={product.title} />
+                  <h3>{product.title}</h3>
+                  <button
+                    onClick={() => removeFromCart(product)}
+                    disabled={product.qty === 1}
+                  >
+                    -
+                  </button>
+                  <p>{product.qty}</p>
+                  <button onClick={() => addToCart(product)}>+</button>
+                  <p>${(product.price * product.qty).toFixed(2)}</p>
+                  <button
+                    onClick={() => {
+                      for (let i = 0; i < product.qty; i++) {
+                        removeFromCart(product);
+                      }
+                    }}
+                  >
+                    Remove
+                  </button>
+                </div>
               </li>
             ))}
           </ul>
-
           <div className={styles.checkout}>
-            <h1>Resumo:</h1>
+            <h1>Resumo: </h1> <br />
             <ul>
               {uniqueProducts.map((product) => (
                 <li
@@ -67,8 +54,18 @@ export function Cart({ cart, removeFromCart, addToCart }) {
                   {(product.price * product.qty).toFixed(2)}
                 </li>
               ))}
-            </ul>
-            <h3>Total: ${total.toFixed(2)}</h3>
+            </ul>{" "}
+            <br />
+            <h3>
+              Total: $
+              {uniqueProducts
+                .reduce(
+                  (total, product) => total + product.price * product.qty,
+                  0
+                )
+                .toFixed(2)}
+            </h3>{" "}
+            <br />
             <button>Continuar</button>
           </div>
         </>

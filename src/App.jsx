@@ -25,12 +25,13 @@ export default function App() {
   }
   return (
     <>
+    <CartProvider>
       <Header cart={cart}/>
       <Routes>
         <Route path="/" element={<ProductList addToCart={addToCart} removeFromCart={removeFromCart}/>}/>
         <Route path="/cart" element={<Cart cart={cart} removeFromCart={removeFromCart} addToCart={addToCart}/>} />
       </Routes>
-      
+      </CartProvider>
     </>
   );
 }

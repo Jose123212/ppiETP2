@@ -11,6 +11,7 @@
     font-size: 3rem;
     color: rgb(37, 100, 234);
     min-height: 100vh;
+    margin-top: 10rem;
 }
 .main {
     display: flex;
@@ -19,6 +20,7 @@
     justify-content: center;
     gap: 2rem;
     padding: 3rem;
+    padding-top: 10rem;
 
 }
 
@@ -72,4 +74,31 @@
     justify-content: center;
     align-items: center;
     gap: 2rem;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    gap: 1rem;
+    font-size: 2rem;
+}
+
+.search input {
+    background-color: rgb(17, 31, 80);
+    border: 1px solid rgb(32, 59, 156);
+    color: rgb(37, 100, 234);
+    font-size: 2rem;
+    padding: 0.5rem;
+}
+
+.search button {
+    background-color: rgb(17, 31, 80);
+    border: 1px solid rgb(32, 59, 156);
+    color: rgb(37, 100, 234);
+    font-size: 2rem;
+    padding: 0.5rem;
 }
