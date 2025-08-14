@@ -1,72 +1,53 @@
 .header1 {
-  grid-area: header1;
-  background-color: rgba(15, 21, 33, 255);
+  background-color: #232f3e; /* azul escuro amazon */
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-direction: row;
-  padding: 1rem;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  @media (max-width: 768px) {
-    flex-direction: column;
-  };
-
-  
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
+
 .title {
-  display: flex;
-  font-weight: bolder;
-  font-size: 5rem;
-  color: rgb(37, 100, 234);
-  text-align: center;
-  margin-left: 40px;
-  @media (max-width: 768px) {
-    font-size: 5rem;
-  }
-}
-.header1 svg {
-  width: 6rem;
-  height: 6rem;
-  font-size: 6rem;
-  object-fit: cover;
-  border-radius: 1rem;
-  color: rgba(36, 99, 235, 255);
-  @media (max-width: 768px) {
-    width: 12rem;
-    height: 12rem;
-    font-size: 12rem;
-    display: flex;
-  }
-}
-.cart {
-  flex-direction: row;  
-  display: flex;
-  font-weight: bolder;
-  font-size: 3rem;
-  color: rgb(37, 100, 234);
-  padding: 1rem;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ff9900; /* laranja amazon */
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.cart button {
-  background-color: transparent;
+.cart {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.cart button, .cart a, .cart svg {
+  color: #ff9900;
+  font-size: 2.2rem;
+  background: none;
   border: none;
   cursor: pointer;
-  color: rgb(37, 100, 234);
-  font-size: 3rem;
+  transition: color 0.2s;
+}
+
+.cart button:hover, .cart a:hover, .cart svg:hover {
+  color: #232f3e;
+  background-color: #ff9900;
+  border-radius: 50%;
 }
 
 .cart p {
-  display: inline-block;
-  background-color: rgb(17, 31, 80);
-  border: 1px solid rgb(37, 100, 234);
-  margin: 0.5rem;
-  padding: 5px;
-  border-radius: 1rem;
-  color: rgb(37, 100, 234);
+  background-color: #fff;
+  border: 1px solid #ff9900;
+  color: #232f3e;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -1rem;
   font-size: 1.5rem;
-  height: 35px;
 }
