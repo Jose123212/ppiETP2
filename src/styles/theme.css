@@ -1,13 +1,13 @@
 :root {
-  --silver: rgb(121, 22, 202);
+  --silver: #c5c5c5ff;
   --outer-space: #4c5b61ff;
   --battleship-gray: #829191ff;
-  --battleship-gray-2: rgb(23, 11, 131);
+  --battleship-gray-2: #949b96ff;
   --dark-slate-gray: #2c423fff;
 
-  --primary: rgb(42, 92, 168);
-  --primary-light: rgb(21, 11, 82);
-  --primary-dark: rgb(9, 5, 66);
+  --primary: #829191ff;
+  --primary-light: #a3adadff;
+  --primary-dark: #5f6b6bff;
   --primary-contrast: #ffffff;
-  --primary-muted: rgb(19, 7, 124);
+  --primary-muted: rgb(74, 77, 77);
 }
