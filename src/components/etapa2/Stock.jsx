@@ -1,6 +1,6 @@
 import styles from "./Stock.module.css";
 import { useContext, useState } from "react";
-import { CartContext } from "../../service/CartContext";
+import { CartContext } from "../../context/CartContext";
 
 export function Stock() {
   const { products, addProduct, removeProduct } = useContext(CartContext);

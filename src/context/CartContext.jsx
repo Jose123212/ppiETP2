@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-
+import { supabase } from "../utils/supabase";
 export const CartContext = createContext({
   products: [],
   cart: [],
@@ -21,32 +21,26 @@ export const CartContext = createContext({
 });
 
 export function CartProvider({ children }) {
-  var category = "mens-shirts";
-  var limit = 12;
-  var apiUrl = `https://dummyjson.com/products/category/${category}?limit=${limit}&select=id,thumbnail,title,price,description`;
-  const [products, setProducts] = useState([]);
-  var [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [registeredEmails, setRegisteredEmails] = useState([]);
-  const [registeredPasswords, setRegisteredPasswords] = useState([]);
+ const[products,setProducts] = useState([]);
+ const[loading,setLoading] = useState(true);
+ const[error,setError] = useState(null);
+
 
   useEffect(() => {
     async function fetchProducts() {
-      try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-
-        setProducts(data.products);
-      } catch (error) {
-        setError(error);
-      } finally {
+      const {data,error} = await supabase.from('products').select();
+       if(error) {
+        setError('Feching Products Failed $(error)');
+       } else {
+        setProducts(data);
+      };
         setLoading(false);
-      }
-    }
-    setTimeout(() => {
-      fetchProducts();
-    }, 100);
+       }
+      
+       
+
+  
+    fetchProducts();
   }, []);
   const [cart, setCart] = useState([]);
 

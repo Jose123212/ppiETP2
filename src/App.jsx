@@ -4,7 +4,7 @@ import { Header } from "./components/Header";
 import { ProductList } from "./components/etapa2/ProductList";
 import { Cart } from "./components/etapa2/Cart";
 import { Routes, Route } from "react-router";
-import { CartProvider } from "./service/CartContext";
+import { CartProvider } from "./context/CartContext";
 import { Footer } from "./components/Footer";
 import { Login } from "./components/etapa2/Login";
 import { Signup } from "./components/etapa2/Signup";
