@@ -1,26 +1,34 @@
 import "./styles/theme.css";
 import "./styles/global.css";
 import { Header } from "./components/Header";
-import { ProductList } from "./components/etapa2/ProductList";
-import { Cart } from "./components/etapa2/Cart";
 import { Routes, Route } from "react-router";
 import { CartProvider } from "./context/CartContext";
-import { Footer } from "./components/Footer";
+import { Cart } from "./components/etapa2/Cart";
+import { ProductList } from "./components/etapa2/ProductList";
 import { Login } from "./components/etapa2/Login";
 import { Signup } from "./components/etapa2/Signup";
-import { Stock } from "./components/etapa2/Stock";
+import { Estoque } from "./components/etapa2/Estoque";
+import { ToastContainer } from 'react-toastify';
+import { User } from "./components/etapa2/user";
+import { SessionProvider} from "./context/SessionContext";
 
 export default function App() {
   return (
-    <CartProvider>
-      <Header />
-      <Routes>
-        <Route path="/" element={<ProductList />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/stock" element={<Stock />} />
-      </Routes>
-    </CartProvider>
+    <>
+      <ToastContainer />
+      <SessionProvider>
+        <CartProvider>
+          <Header />
+          <Routes>
+            <Route path="/" element={<ProductList />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/stock" element={<Estoque />} />
+            <Route path="/user" element={<User />} />
+          </Routes>
+        </CartProvider>
+      </SessionProvider>
+    </>
   );
 }

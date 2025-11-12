@@ -6,47 +6,45 @@ import { CartContext } from "../../context/CartContext";
 
 export function ProductList() {
   const { products, loading, error } = useContext(CartContext);
-
+  
   const searchInput = useRef(null);
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  var [filteredProducts, setFilteredProducts] = useState(products);
 
   useEffect(() => {
     setFilteredProducts(products);
   }, [products]);
 
-  function handleSearchChange() {
-    const query = searchInput.current.value.toLowerCase();
-    const filtered = products.filter(product =>
-      product.title.toLowerCase().includes(query) ||
-      product.description.toLowerCase().includes(query)
-    );
-    setFilteredProducts(filtered);
-  }
-
-  function handleClear() {
-    searchInput.current.value = "";
-    setFilteredProducts(products);
-  }
-
   return (
     <div className={styles.container}>
-      <div className={styles.search}>
-        <input
+       <div className= {styles.main}>
+        <div className= {styles.search}>
+          <input 
           type="text"
           ref={searchInput}
           placeholder="Search products..."
-          onChange={handleSearchChange}
-        />
-        <button onClick={handleClear}>Clear</button>
-      </div>
-      <div className={styles.main}>
-        {filteredProducts.map((product) => (
-          <Product key={product.id} product={product} />
+          onChange={() => {
+            const query = searchInput.current.value.toLowerCase();
+            filteredProducts = products.filter(product =>
+              product.title.toLowerCase().includes(query) || 
+              product.description.toLowerCase().includes(query)
+            );
+            setFilteredProducts(filteredProducts);
+          }}
+          />
+          <button onClick={() => {
+            searchInput.current.value = "";
+            setFilteredProducts(products);
+          }}>Clear</button>
+        </div>
+       {filteredProducts.map((product) => (
+      <Product key={product.id} product={product}/>
+        
         ))}
-      </div>
-      {loading && (
+        </div>
+         {loading && (
         <div>
-          <CircularProgress
+          <CircularProgress   
+            // size="sm"
             thickness={5}
             style={{ margin: "2rem auto", display: "block" }}
             sx={{

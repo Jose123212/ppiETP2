@@ -1,59 +1,67 @@
 .SignupContainer {
-  background: linear-gradient(
-    to bottom,
-    #232f3e 0%,
-    #fff 100%
-  );
-  color: #232f3e;
-  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 4rem;
-}
-
-.SignupContainer h1 {
+  padding: 20px;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 21, 33, 255) 0%,
+    rgba(10, 20, 117, 255) 100%
+  );
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 10rem;
+  min-height: 90vh;
+  color: rgb(37, 100, 234);
   font-size: 3rem;
-  color: #ff9900;
-  margin-bottom: 2rem;
   font-weight: bold;
 }
 
 .signupForm {
-  background-color: #fff;
-  border: 2px solid #ff9900;
-  color: #232f3e;
   display: flex;
   flex-direction: column;
-  width: 320px;
+  width: 300px;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(35,47,62,0.08);
+  border-radius: 10px;
+  color: rgb(37, 100, 234);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin: 1rem;
-  font-size: 1.2rem;
+  font-size: 3rem;
+  background-color: rgb(17, 31, 80);
+  border: 1px solid rgb(32, 59, 156);
+  border-radius: 8px;
 }
-
 .signupForm input {
-  background-color: #f3f3f3;
-  border: 1px solid #232f3e;
-  color: #232f3e;
-  border-radius: 6px;
   padding: 1rem;
-  font-size: 1rem;
-  margin-bottom: 1rem;
+  background-color: rgb(13, 25, 70);
+  border: 1px solid rgb(32, 59, 156);
+  font-size: 1.5rem;
+  color: rgb(37, 100, 234);
 }
-
 .signupForm label {
-  color: #232f3e;
-  margin-bottom: 0.5rem;
-  margin-top: 1rem;
-  font-size: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+  font-size: 2rem;
+  color: rgb(37, 100, 234);
   font-weight: bold;
 }
-
 .signupForm button {
-  background-color: #ff9900;
-  color: #232f3e;
+  margin-top: 2rem;
+  background-color: rgb(23, 54, 121);
+  color: rgb(37, 100, 234);
   border: none;
-  padding: 0.7rem 1.2rem;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  width: 100%;
+}
+.signupForm button:hover {
+  background-color: rgb(17, 59, 151);
+}
+
+.login {
+  font-size: 2rem;
+  color: rgb(37, 100, 234);
+  margin-bottom: 2rem;
 }

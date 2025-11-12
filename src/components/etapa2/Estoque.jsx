@@ -1,8 +1,8 @@
-import styles from "./Stock.module.css";
+import styles from "./Estoque.module.css";
 import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 
-export function Stock() {
+export function Estoque() {
   const { products, addProduct, removeProduct } = useContext(CartContext);
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
