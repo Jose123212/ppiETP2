@@ -1,5 +1,5 @@
 import styles from "./MyGrid.module.css";
-import { Phone, BookOpenCheck } from "lucide-react";
+import { Github, Instagram, Phone, BookOpenCheck } from "lucide-react";
 const cards = [0, 1, 2, 3, 4];
 export function MyGrid() {
   // Desestruturação de props
@@ -8,7 +8,7 @@ export function MyGrid() {
     <div className={styles.container}>
       <header className={styles.header1}>
         <BookOpenCheck />
-        <h1>Game of Lucky </h1>
+        <h1>Foco, Força, Fé</h1>
       </header>
       <main className={styles.main}>
         <div className={styles.grid}>
@@ -105,13 +105,8 @@ export function MyGrid() {
             <h1>IFRN - Campus Macau</h1>
             <h1>Curso Técnico em Informática</h1>
             <h1>Programação para Internet 2025</h1>
-          </div>
-          <div>
-            <p>José Fernandes</p>
-          </div>
-          <div className={styles.icons}>
-            <a href="" target="_blank">
-            </a>
+
+            
           </div>
         </div>
       </footer>
